@@ -1,31 +1,31 @@
 package br.com.bluebank.squad3.models;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.Email;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "clientes")
-public class Cliente implements Serializable {
+@Table(name = "cliente")
+public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_cliente;
 
     @NotNull
-    @Size(max = 100)
-    @Column(name = "nome")
+    @Size(max = 120)
+    @Column
     private String nome;
 
     @NotNull
-    @Size(max = 100)
-    @Column(name = "cpf")
+    @Size(max = 11)
+    @Column
     private String cpf;
 
     @NotNull
     @Size(max = 100)
-    @Column(name = "telefone")
+    @Column
     private String telefone;
 
 
@@ -35,11 +35,9 @@ public class Cliente implements Serializable {
     @Column(unique = true)
     private String email;
 
-
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL,
-            mappedBy = "cliente")
-    private Endereco endereco;
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco")
+    private Endereco id_endereco;
 
     public Cliente(Long id_cliente, String nome, String cpf, String telefone, String email, Endereco endereco) {
         this.id_cliente = id_cliente;
@@ -48,13 +46,6 @@ public class Cliente implements Serializable {
         this.telefone = telefone;
         this.email = email;
         this.endereco = endereco;
-    }
-
-    public Cliente(String nome, String cpf, String telefone, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
     }
 
     public String getNome() {
