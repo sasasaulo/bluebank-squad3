@@ -8,29 +8,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-@Table(name = "tb_cliente")
+@Table(name = "tb_cliente", uniqueConstraints = { @UniqueConstraint(columnNames = "cpf") })
 public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_cliente;
 
-	@NotNull
+	@NotNull(message = "nome não pode ser nulo e nem vazio")
 	@Size(max = 120)
-	@Column
+	@Column(name = "nome")
 	private String nome;
 
+	@NotNull(message = "cpf não pode ser nulo e nem vazio")
 	@CPF
-	@Column
+	@Column(name = "cpf", unique = true, nullable = false, length = 11)
 	private String cpf;
 
-	@Column
+	@NotNull(message = "telefone não pode ser nulo")
+	@Column(name = "telefone")
 	private Long telefone;
 
 	public Long getId_cliente() {
