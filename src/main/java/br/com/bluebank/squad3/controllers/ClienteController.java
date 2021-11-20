@@ -2,10 +2,7 @@ package br.com.bluebank.squad3.controllers;
 
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Optional;
-
 import javax.validation.Valid;
-
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +35,11 @@ public class ClienteController {
 		return ResponseEntity.ok(clienteRepository.findAll());
 	}
 
+	@GetMapping(value = "listar/{id_cliente}")
+	public ResponseEntity<Cliente> findById(@PathVariable Long id_cliente) {
+		return ResponseEntity.ok(clienteRepository.findById(id_cliente).get());
+	}
+
 	@PostMapping("/cadastrar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
@@ -56,15 +58,16 @@ public class ClienteController {
 //			return Optional.empty();
 //		});
 //	}
-	
+
 	@PutMapping("/atualizar/{id_cliente}")
-	public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id_cliente, @RequestBody @Valid Cliente cliente) throws URISyntaxException {
-        clienteRepository.findById(id_cliente);
-        cliente.setId_cliente(id_cliente);
-        clienteRepository.save(cliente);
-    	return new ResponseEntity<>(cliente, HttpStatus.CREATED);
-    }
-	
+	public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id_cliente, @RequestBody @Valid Cliente cliente)
+			throws URISyntaxException {
+		clienteRepository.findById(id_cliente);
+		cliente.setId_cliente(id_cliente);
+		clienteRepository.save(cliente);
+		return new ResponseEntity<>(cliente, HttpStatus.CREATED);
+	}
+
 	@DeleteMapping("/deletar/{id_cliente}")
 	public void deletarCliente(@PathVariable Long id_cliente) {
 		clienteRepository.deleteById(id_cliente);
