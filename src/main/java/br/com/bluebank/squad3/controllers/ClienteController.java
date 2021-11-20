@@ -22,7 +22,7 @@ import br.com.bluebank.squad3.repositories.ClienteRepository;
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
-
+	
 //	@Autowired
 	private ClienteRepository clienteRepository;
 
@@ -40,7 +40,7 @@ public class ClienteController {
 		return ResponseEntity.ok(clienteRepository.findById(id_cliente).get());
 	}
 
-	@PostMapping("/cadastrar")
+  @PostMapping("/cadastrar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(clienteRepository.save(cliente));

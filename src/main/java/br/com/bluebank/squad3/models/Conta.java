@@ -3,33 +3,31 @@ package br.com.bluebank.squad3.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name= "conta")
 public class Conta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name="id_conta")
 	private Long id_conta;
 
-	@Column
+	@Column(name="agencia")
 	private int agencia;
 
-	@Column
+	@Column(name="conta")
 	private int conta;
 
-	@Column
+	@Column(name="saldo")
 	private Long saldo;
 
+
+
+//	@OneToOne(cascade =CascadeType.ALL )
+//	@JoinColumn(name = "id_cliente")
+//	private Cliente cliente;
 //	@OneToMany(mappedBy = "conta", cascade = CascadeType.ALL)
 //	private List<Transacoes> transacoes = new ArrayList<>();
 
