@@ -1,92 +1,90 @@
 package br.com.bluebank.squad3.models;
 
+import java.util.Objects;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.validation.constraints.Email;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "tb_cliente", uniqueConstraints = { @UniqueConstraint(columnNames = "cpf") })
 public class Cliente {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_cliente;
 
-    @NotNull
-    @Size(max = 120)
-    @Column
-    private String nome;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id_cliente;
 
-    @NotNull
-    @Size(max = 11)
-    @Column
-    private String cpf;
+	@NotNull(message = "nome não pode ser nulo e nem vazio")
+	@Size(max = 120)
+	@Column(name = "nome")
+	private String nome;
 
-    @NotNull
-    @Size(max = 100)
-    @Column
-    private String telefone;
+	@NotNull(message = "cpf não pode ser nulo e nem vazio")
+	@CPF
+	@Column(name = "cpf", unique = true, nullable = false, length = 11)
+	private String cpf;
 
+	@NotNull(message = "telefone não pode ser nulo")
+	@Column(name = "telefone")
+	private Long telefone;
 
-    @NotNull
-    @Email
-    @Size(max = 100)
-    @Column(unique = true)
-    private String email;
+	public Long getId_cliente() {
+		return id_cliente;
+	}
 
-    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco")
-    private Endereco id_endereco;
+	public void setId_cliente(Long id_cliente) {
+		this.id_cliente = id_cliente;
+	}
 
-    public Cliente(Long id_cliente, String nome, String cpf, String telefone, String email, Endereco endereco) {
-        this.id_cliente = id_cliente;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.email = email;
-        this.endereco = endereco;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	public Long getTelefone() {
+		return telefone;
+	}
 
-    public String getTelefone() {
-        return telefone;
-    }
+	public void setTelefone(Long telefone) {
+		this.telefone = telefone;
+	}
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(id_cliente);
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(id_cliente, other.id_cliente);
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    // Getters and Setters (Omitted for brevity)
 }
+
