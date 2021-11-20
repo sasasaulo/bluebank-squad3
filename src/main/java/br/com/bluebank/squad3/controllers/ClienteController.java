@@ -25,6 +25,7 @@ import br.com.bluebank.squad3.repositories.ClienteRepository;
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
+	//isso é um teste
 
 //	@Autowired
 	private ClienteRepository clienteRepository;
@@ -37,7 +38,7 @@ public class ClienteController {
 	public ResponseEntity<List<Cliente>> listarClientes() {
 		return ResponseEntity.ok(clienteRepository.findAll());
 	}
-
+	//metodo de listar por id
 	@PostMapping("/cadastrar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
