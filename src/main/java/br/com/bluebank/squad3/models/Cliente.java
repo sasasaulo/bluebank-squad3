@@ -2,6 +2,7 @@ package br.com.bluebank.squad3.models;
 
 import java.util.Objects;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -86,3 +87,4 @@ public class Cliente {
 	}
 
 }
+
