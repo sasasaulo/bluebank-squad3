@@ -4,7 +4,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.validation.Valid;
-
 //import org.springframework.beans.factory.annotation.Autowired;
 import br.com.bluebank.squad3.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class ClienteController {
 
 	private ClienteService clienteService;
 
-	@Autowired
+  //@Autowired
 	public
 	void ClienteService(ClienteService clienteService) {
 		this.clienteService = clienteService;
@@ -38,18 +37,39 @@ public class ClienteController {
 	public ResponseEntity<List<Cliente>> listarClientes() {
 		return this.clienteService.listarClientes();
 	}
-	//metodo de listar por id
-	@PostMapping("/cadastrar")
+
+	@GetMapping(value = "listar/{id_cliente}")
+	public ResponseEntity<Cliente> findById(@PathVariable Long id_cliente) {
+		return ResponseEntity.ok(clienteRepository.findById(id_cliente).get());
+	}
+
+  @PostMapping("/cadastrar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
 		return this.clienteService.cadastrarCliente(cliente);
 	}
+
 
 	@PutMapping("/atualizar/{id_cliente}")
 	public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id_cliente, @RequestBody @Valid Cliente cliente) throws URISyntaxException {
         return this.clienteService.atualizarCliente(id_cliente, cliente);
     }
 	
+
+//	@PutMapping("/atualizar/{id_cliente}")
+//	public Optional<ResponseEntity<Cliente>> atualizarNome(@PathVariable(value = "id_cliente") Long id_cliente,
+//			@RequestBody Cliente nomeAtualizado) {
+//		return clienteRepository.findById(id_cliente).map(nomeExistente -> {
+//			nomeExistente.setNome(nomeAtualizado.getNome());
+//			return Optional
+//					.ofNullable(ResponseEntity.status(HttpStatus.OK).body(clienteRepository.save(nomeExistente)));
+//
+//		}).orElseGet(() -> {
+//			return Optional.empty();
+//		});
+//	}
+
+
 	@DeleteMapping("/deletar/{id_cliente}")
 	public void deletarCliente(@PathVariable Long id_cliente) {
 		this.clienteService.deletarCliente((id_cliente));

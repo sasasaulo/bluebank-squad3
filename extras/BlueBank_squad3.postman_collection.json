@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "41be78e9-b2a9-491e-90e2-0270dfc3106c",
+		"name": "BlueBank_squad3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Cliente Listar todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/clientes/listar",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clientes",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"nome\": \"Daniele de Sousa\",\n    \"cpf\": \"63750960062\",\n    \"telefone\": 1198547854\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/clientes/cadastrar",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clientes",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente Listar por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/clientes/listar/{id_cliente}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clientes",
+								"listar",
+								"{id_cliente}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/clientes/deletar/{id_cliente}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clientes",
+								"deletar",
+								"{id_cliente}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_cliente\": 1,\n    \"nome\": \"Joao da Silva\",\n    \"cpf\": \"35552390075\",\n    \"telefone\": 11988452147\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/clientes/atualizar/{id_cliente}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"clientes",
+								"atualizar",
+								"{id_cliente}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
