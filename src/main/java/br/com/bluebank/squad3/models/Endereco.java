@@ -7,19 +7,19 @@ import javax.persistence.*;
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_endereco")
+    @Column(name = "id_endereco", nullable = false)
     private Long id_endereco;
 
-    @Column(name = "rua")
+    @Column(name = "rua", nullable = false)
     private String rua;
 
-    @Column(name = "numero")
+    @Column(name = "numero", nullable = false)
     private Integer numero;
 
-    @Column(name = "bairro")
+    @Column(name = "bairro", nullable = false)
     private String bairro;
 
-    @Column(name = "cep")
+    @Column(name = "cep", nullable = false)
     private String cep;
 
     public Long getId_endereco() {
@@ -61,4 +61,5 @@ public class Endereco {
     public void setCep(String cep) {
         this.cep = cep;
     }
+
 }
