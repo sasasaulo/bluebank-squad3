@@ -12,14 +12,11 @@ public class ClienteService {
 
     private final ClienteRepository clienteRepository;
 
-    public
-    ClienteService (ClienteRepository clienteRepository) {
+    public ClienteService (ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
 
-
-    public
-    ResponseEntity<List<Cliente>> listarClientes() {
+    public ResponseEntity<List<Cliente>> listarClientes() {
         return ResponseEntity.ok(clienteRepository.findAll());
     }
 

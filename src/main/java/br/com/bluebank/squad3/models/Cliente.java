@@ -3,13 +3,7 @@ package br.com.bluebank.squad3.models;
 import java.util.Objects;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -36,6 +30,10 @@ public class Cliente {
 	@NotNull(message = "telefone não pode ser nulo")
 	@Column(name = "telefone")
 	private Long telefone;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco")
+    private Endereco endereco;
 
 	public Long getId_cliente() {
 		return id_cliente;
