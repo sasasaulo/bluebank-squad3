@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "41be78e9-b2a9-491e-90e2-0270dfc3106c",
-		"name": "BlueBank_squad3",
+		"_postman_id": "2c874cf3-20db-4903-89d8-cdfff8654249",
+		"name": "BlueBank_Squad3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -9,15 +9,16 @@
 			"name": "Cliente",
 			"item": [
 				{
-					"name": "Cliente Listar todos",
+					"name": "listarClientes",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{API_URL}}/clientes/listar",
+							"raw": "localhost:8080/clientes/listar",
 							"host": [
-								"{{API_URL}}"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
 								"clientes",
 								"listar"
@@ -27,13 +28,33 @@
 					"response": []
 				},
 				{
-					"name": "Cliente Cadastrar",
+					"name": "listarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/clientes/listar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"listar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrarCliente",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\n{\n    \"nome\": \"Daniele de Sousa\",\n    \"cpf\": \"63750960062\",\n    \"telefone\": 1198547854\n}\n",
+							"raw": "{\r\n        \"nome\": \"Saulo\",\r\n        \"cpf\": \"74425525019\",\r\n        \"telefone\": 26131514,\r\n        \"conta\": {\r\n            \"agencia\": 1324,\r\n            \"conta\": 1968,\r\n            \"saldo\": -300.0\r\n        }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -41,10 +62,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/clientes/cadastrar",
+							"raw": "localhost:8080/clientes/cadastrar",
 							"host": [
-								"{{API_URL}}"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
 								"clientes",
 								"cadastrar"
@@ -54,51 +76,13 @@
 					"response": []
 				},
 				{
-					"name": "Cliente Listar por Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API_URL}}/clientes/listar/{id_cliente}",
-							"host": [
-								"{{API_URL}}"
-							],
-							"path": [
-								"clientes",
-								"listar",
-								"{id_cliente}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cliente Deletar",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{API_URL}}/clientes/deletar/{id_cliente}",
-							"host": [
-								"{{API_URL}}"
-							],
-							"path": [
-								"clientes",
-								"deletar",
-								"{id_cliente}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cliente Atualizar",
+					"name": "atualizarNome",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id_cliente\": 1,\n    \"nome\": \"Joao da Silva\",\n    \"cpf\": \"35552390075\",\n    \"telefone\": 11988452147\n}",
+							"raw": "{\r\n    \"nome\": \"Dimitri\",\r\n    \"cpf\": \"90028643887\",\r\n    \"telefone\": 26131514 \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -106,14 +90,208 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/clientes/atualizar/{id_cliente}",
+							"raw": "localhost:8080/clientes/atualizar/6",
 							"host": [
-								"{{API_URL}}"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
 								"clientes",
 								"atualizar",
-								"{id_cliente}"
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletarCliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/clientes/deletar/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"deletar",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conta",
+			"item": [
+				{
+					"name": "listarContas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/contas/listar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/contas/listar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								"listar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrarConta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"agencia\": 4958,\r\n    \"conta\": 14578,\r\n    \"saldo\": 300.80 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/contas/cadastrar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizarConta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"agencia\": 1825,\r\n    \"conta\": 148597\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/contas/atualizar/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								"atualizar",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletarConta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/contas/deletar/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"contas",
+								"deletar",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transacao",
+			"item": [
+				{
+					"name": "listarTransacao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/transacoes/listar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transacoes",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrarTransacao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id_contaenvia\": 1,\r\n        \"id_contarecebe\": 2,\r\n        \"valor_transacao\": 20.0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/transacoes/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transacoes",
+								""
 							]
 						}
 					},

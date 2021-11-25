@@ -21,17 +21,17 @@ public class ContaService {
         return contarepository.findAll();
     }
 
-    public Conta listarporId(long idconta){
-        Optional<Conta> conta = contarepository.findById(idconta);
+    public Conta listarPorId(Long id_conta){
+        Optional<Conta> conta = contarepository.findById(id_conta);
         return conta.get();
     }
 
-    public void alterar ( long idconta,Conta conta){
-        contarepository.findById(idconta);
-        conta.setId_conta(idconta);
+    public void alterar ( Long id_conta,Conta conta){
+        contarepository.findById(id_conta);
+        conta.setId_conta(id_conta);
         contarepository.save(conta);
     }
-    public void deletar(long idconta){
+    public void deletar(Long idconta){
         contarepository.deleteById(idconta);
 
     }

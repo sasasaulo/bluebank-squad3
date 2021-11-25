@@ -20,41 +20,52 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.bluebank.squad3.models.Cliente;
+import br.com.bluebank.squad3.models.Conta;
 
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
 
+	@Autowired
 	private ClienteService clienteService;
 
-  //@Autowired
-	public
-	void ClienteService(ClienteService clienteService) {
-		this.clienteService = clienteService;
-	}
+	// @Autowired
+	/*
+	 * public void ClienteService(ClienteService clienteService) {
+	 * this.clienteService = clienteService; }
+	 */
 
 	@GetMapping("/listar")
 	public ResponseEntity<List<Cliente>> listarClientes() {
-		return this.clienteService.listarClientes();
+
+		return ResponseEntity.ok(clienteService.listar());
 	}
 
-	@GetMapping(value = "listar/{id_cliente}")
-	public ResponseEntity<Cliente> findById(@PathVariable Long id_cliente) {
-		return ResponseEntity.ok(clienteRepository.findById(id_cliente).get());
+	@GetMapping("/listar/{id_cliente}")
+	public ResponseEntity<Cliente> listarClientePorId(@PathVariable Long id_cliente) {
+
+		return ResponseEntity.ok(clienteService.listarPorId(id_cliente));
 	}
 
-  @PostMapping("/cadastrar")
+	@PostMapping("/cadastrar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
-		return this.clienteService.cadastrarCliente(cliente);
+	public ResponseEntity<Cliente> cadastrarConta(@RequestBody Cliente cliente) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(clienteService.salvar(cliente));
 	}
 
+	/*
+	 * @PutMapping("/atualizar/{id_cliente}") public ResponseEntity<Cliente>
+	 * atualizarCliente(@PathVariable Long id_cliente, @RequestBody @Valid Cliente
+	 * cliente) throws URISyntaxException { return
+	 * this.clienteService.atualizarCliente(id_cliente, cliente); }
+	 */
 
 	@PutMapping("/atualizar/{id_cliente}")
-	public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id_cliente, @RequestBody @Valid Cliente cliente) throws URISyntaxException {
-        return this.clienteService.atualizarCliente(id_cliente, cliente);
-    }
-	
+	public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id_cliente, @RequestBody @Valid Cliente cliente)
+			throws URISyntaxException {
+		clienteService.alterar(id_cliente, cliente);
+		return new ResponseEntity<>(cliente, HttpStatus.CREATED);
+	}
 
 //	@PutMapping("/atualizar/{id_cliente}")
 //	public Optional<ResponseEntity<Cliente>> atualizarNome(@PathVariable(value = "id_cliente") Long id_cliente,
@@ -69,9 +80,8 @@ public class ClienteController {
 //		});
 //	}
 
-
 	@DeleteMapping("/deletar/{id_cliente}")
 	public void deletarCliente(@PathVariable Long id_cliente) {
-		this.clienteService.deletarCliente((id_cliente));
+		clienteService.deletar((id_cliente));
 	}
 }

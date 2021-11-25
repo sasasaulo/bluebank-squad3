@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-@Table(name = "tb_cliente", uniqueConstraints = { @UniqueConstraint(columnNames = "cpf") })
+@Table(name = "cliente", uniqueConstraints = { @UniqueConstraint(columnNames = "cpf") })
 public class Cliente {
 
 	@Id
