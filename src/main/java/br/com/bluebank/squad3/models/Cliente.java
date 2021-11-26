@@ -31,6 +31,10 @@ public class Cliente {
 	@Column(name = "telefone")
 	private Long telefone;
 
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "id_endereco")
+  private Endereco endereco;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idcontafk")
 	private Conta conta;
