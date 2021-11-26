@@ -26,8 +26,10 @@ public class Conta {
 	@OneToOne(mappedBy="conta")
 	private Cliente cliente;
 
-	@OneToMany(mappedBy = "conta", cascade = CascadeType.ALL)
-	private List<Transacoes> transacoes;
+	/*
+	 * @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL) private
+	 * List<Transacoes> transacoes;
+	 */
 
 	public Long getId_conta() {
 		return id_conta;
@@ -61,19 +63,16 @@ public class Conta {
 		this.saldo = saldo;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+	/*
+	 * public Cliente getCliente() { return cliente; }
+	 * 
+	 * public void setCliente(Cliente cliente) { this.cliente = cliente; }
+	 */
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public List<Transacoes> getTransacoes() {
-		return transacoes;
-	}
-
-	public void setTransacoes(List<Transacoes> transacoes) {
-		this.transacoes = transacoes;
-	}
+	/*
+	 * public List<Transacoes> getTransacoes() { return transacoes; }
+	 * 
+	 * public void setTransacoes(List<Transacoes> transacoes) { this.transacoes =
+	 * transacoes; }
+	 */
 }

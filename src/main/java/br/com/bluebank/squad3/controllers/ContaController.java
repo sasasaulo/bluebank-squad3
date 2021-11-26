@@ -15,20 +15,26 @@ import java.util.List;
 @RestController
 @RequestMapping("/contas")
 public class ContaController {
-   @Autowired
-   private ContaService contaservice;
+	@Autowired
+	private ContaService contaservice;
 
-    @GetMapping("/listar")
-    public ResponseEntity<List<Conta>> listarContas() {
+	@GetMapping("/listar")
+	public ResponseEntity<List<Conta>> listarContas() {
 
-        return ResponseEntity.ok(contaservice.listar());
-    }
+		return ResponseEntity.ok(contaservice.listar());
+	}
 
-    @PostMapping("/cadastrar")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Conta> cadastrarConta(@RequestBody Conta conta) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(contaservice.salvar(conta));
-    }
+	@GetMapping("/listar/{id_conta}")
+	public ResponseEntity<Conta> listarContaPorId(@PathVariable Long id_conta) {
+
+		return ResponseEntity.ok(contaservice.listarPorId(id_conta));
+	}
+
+	@PostMapping("/cadastrar")
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<Conta> cadastrarConta(@RequestBody Conta conta) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(contaservice.salvar(conta));
+	}
 
 //	@PutMapping("/atualizar/{id_cliente}")
 //	public Optional<ResponseEntity<Cliente>> atualizarNome(@PathVariable(value = "id_cliente") Long id_cliente,
@@ -43,14 +49,15 @@ public class ContaController {
 //		});
 //	}
 
-    @PutMapping("/atualizar/{id_conta}")
-    public ResponseEntity<Conta> atualizarConta(@PathVariable Long id_conta, @RequestBody @Valid Conta conta) throws URISyntaxException {
-        contaservice.alterar(id_conta,conta);
-        return new ResponseEntity<>(conta, HttpStatus.CREATED);
-    }
+	@PutMapping("/atualizar/{id_conta}")
+	public ResponseEntity<Conta> atualizarConta(@PathVariable Long id_conta, @RequestBody @Valid Conta conta)
+			throws URISyntaxException {
+		contaservice.alterar(id_conta, conta);
+		return new ResponseEntity<>(conta, HttpStatus.CREATED);
+	}
 
-    @DeleteMapping("/deletar/{id_conta}")
-    public void deletarConta(@PathVariable Long id_conta) {
-        contaservice.deletar(id_conta);
-    }
+	@DeleteMapping("/deletar/{id_conta}")
+	public void deletarConta(@PathVariable Long id_conta) {
+		contaservice.deletar(id_conta);
+	}
 }
