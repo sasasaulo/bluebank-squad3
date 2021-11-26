@@ -31,9 +31,9 @@ public class Cliente {
 	@Column(name = "telefone")
 	private Long telefone;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco")
-    private Endereco endereco;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_endereco")
+//    private Endereco endereco;
 
 	public Long getId_cliente() {
 		return id_cliente;

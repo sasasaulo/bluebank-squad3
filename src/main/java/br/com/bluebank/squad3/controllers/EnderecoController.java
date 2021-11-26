@@ -2,6 +2,7 @@ package br.com.bluebank.squad3.controllers;
 
 import br.com.bluebank.squad3.models.Endereco;
 import br.com.bluebank.squad3.services.EnderecoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,9 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/endereco")
+@RequestMapping("/endereco")
 public class EnderecoController {
-
+    @Autowired
     private EnderecoService enderecoService;
 
     public void EnderecoService(EnderecoService enderecoService) {
