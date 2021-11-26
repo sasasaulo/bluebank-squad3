@@ -2,6 +2,8 @@ package br.com.bluebank.squad3.controllers;
 
 import br.com.bluebank.squad3.models.Conta;
 import br.com.bluebank.squad3.repositories.ContaRepository;
+import br.com.bluebank.squad3.services.ContaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,24 +15,26 @@ import java.util.List;
 @RestController
 @RequestMapping("/contas")
 public class ContaController {
-    private ContaRepository contaRepository;
+	@Autowired
+	private ContaService contaservice;
 
-    public ContaController(ContaRepository contaRepository ) {
+	@GetMapping("/listar")
+	public ResponseEntity<List<Conta>> listarContas() {
 
-        this.contaRepository = contaRepository;
-    }
+		return ResponseEntity.ok(contaservice.listar());
+	}
 
-    @GetMapping("/listar")
-    public ResponseEntity<List<Conta>> listarContas() {
+	@GetMapping("/listar/{id_conta}")
+	public ResponseEntity<Conta> listarContaPorId(@PathVariable Long id_conta) {
 
-        return ResponseEntity.ok(contaRepository.findAll());
-    }
+		return ResponseEntity.ok(contaservice.listarPorId(id_conta));
+	}
 
-    @PostMapping("/cadastrar")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Conta> cadastrarConta(@RequestBody Conta conta) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(contaRepository.save(conta));
-    }
+	@PostMapping("/cadastrar")
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<Conta> cadastrarConta(@RequestBody Conta conta) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(contaservice.salvar(conta));
+	}
 
 //	@PutMapping("/atualizar/{id_cliente}")
 //	public Optional<ResponseEntity<Cliente>> atualizarNome(@PathVariable(value = "id_cliente") Long id_cliente,
@@ -45,16 +49,15 @@ public class ContaController {
 //		});
 //	}
 
-    @PutMapping("/atualizar/{id_conta}")
-    public ResponseEntity<Conta> atualizarConta(@PathVariable Long id_conta, @RequestBody @Valid Conta conta) throws URISyntaxException {
-        contaRepository.findById(id_conta);
-        conta.setId_conta(id_conta);
-        contaRepository.save(conta);
-        return new ResponseEntity<>(conta, HttpStatus.CREATED);
-    }
+	@PutMapping("/atualizar/{id_conta}")
+	public ResponseEntity<Conta> atualizarConta(@PathVariable Long id_conta, @RequestBody @Valid Conta conta)
+			throws URISyntaxException {
+		contaservice.alterar(id_conta, conta);
+		return new ResponseEntity<>(conta, HttpStatus.CREATED);
+	}
 
-    @DeleteMapping("/deletar/{id_conta}")
-    public void deletarConta(@PathVariable Long id_conta) {
-        contaRepository.deleteById(id_conta);
-    }
+	@DeleteMapping("/deletar/{id_conta}")
+	public void deletarConta(@PathVariable Long id_conta) {
+		contaservice.deletar(id_conta);
+	}
 }

@@ -21,15 +21,15 @@ public class Conta {
 	private int conta;
 
 	@Column(name="saldo")
-	private Long saldo;
+	private Double saldo;
 
+	@OneToOne(mappedBy="conta")
+	private Cliente cliente;
 
-
-//	@OneToOne(cascade =CascadeType.ALL )
-//	@JoinColumn(name = "id_cliente")
-//	private Cliente cliente;
-//	@OneToMany(mappedBy = "conta", cascade = CascadeType.ALL)
-//	private List<Transacoes> transacoes = new ArrayList<>();
+	/*
+	 * @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL) private
+	 * List<Transacoes> transacoes;
+	 */
 
 	public Long getId_conta() {
 		return id_conta;
@@ -55,12 +55,24 @@ public class Conta {
 		this.conta = conta;
 	}
 
-	public Long getSaldo() {
+	public Double getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(Long saldo) {
+	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
 
+	/*
+	 * public Cliente getCliente() { return cliente; }
+	 * 
+	 * public void setCliente(Cliente cliente) { this.cliente = cliente; }
+	 */
+
+	/*
+	 * public List<Transacoes> getTransacoes() { return transacoes; }
+	 * 
+	 * public void setTransacoes(List<Transacoes> transacoes) { this.transacoes =
+	 * transacoes; }
+	 */
 }

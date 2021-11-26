@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-@Table(name = "tb_cliente", uniqueConstraints = { @UniqueConstraint(columnNames = "cpf") })
+@Table(name = "cliente", uniqueConstraints = { @UniqueConstraint(columnNames = "cpf") })
 public class Cliente {
 
 	@Id
@@ -31,9 +31,13 @@ public class Cliente {
 	@Column(name = "telefone")
 	private Long telefone;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "id_endereco")
-//    private Endereco endereco;
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "id_endereco")
+  private Endereco endereco;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idcontafk")
+	private Conta conta;
 
 	public Long getId_cliente() {
 		return id_cliente;
@@ -65,6 +69,14 @@ public class Cliente {
 
 	public void setTelefone(Long telefone) {
 		this.telefone = telefone;
+	}
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
 	}
 
 	@Override
