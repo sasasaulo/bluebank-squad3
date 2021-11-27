@@ -1,24 +1,32 @@
 package br.com.bluebank.squad3.models;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "endereco")
 public class Endereco {
+
+    @ApiModelProperty(value = "Código do Endereço")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_endereco", nullable = false)
     private Long id_endereco;
 
+    @ApiModelProperty(value = "Rua do Endereço")
     @Column(name = "rua", nullable = false)
     private String rua;
 
+    @ApiModelProperty(value = "Número do Endereço")
     @Column(name = "numero", nullable = false)
     private Integer numero;
 
+    @ApiModelProperty(value = "Bairro do Endereço")
     @Column(name = "bairro", nullable = false)
     private String bairro;
 
+    @ApiModelProperty(value = "CEP do Endereço")
     @Column(name = "cep", nullable = false)
     private String cep;
 

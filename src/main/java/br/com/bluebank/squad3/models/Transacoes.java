@@ -1,5 +1,7 @@
 package br.com.bluebank.squad3.models;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,11 +20,13 @@ import javax.validation.constraints.NotNull;
 @Table(name = "transacoes")
 public class Transacoes {
 
+	@ApiModelProperty(value = "Código da Transação")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_transacoes")
 	private Long id_transacoes;
 
+	@ApiModelProperty(value = "Data da Transação")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
@@ -35,9 +39,11 @@ public class Transacoes {
 	@Column(name = "id_contaenvia")
 	private Long id_contaenvia;
 
+
 	@Column(name = "id_contarecebe")
 	private Long id_contarecebe;
 
+	@ApiModelProperty(value = "Valor da Transação")
 	@NotNull(message = "valor_transacao não pode ser nulo e nem vazio")
 	@Column(name = "valor_transacao")
 	private Double valor_transacao;

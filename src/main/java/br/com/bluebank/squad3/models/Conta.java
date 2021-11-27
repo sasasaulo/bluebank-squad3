@@ -1,5 +1,7 @@
 package br.com.bluebank.squad3.models;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,17 +11,21 @@ import javax.persistence.*;
 @Table(name= "conta")
 public class Conta {
 
+	@ApiModelProperty(value = "Código da conta")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_conta")
 	private Long id_conta;
 
+	@ApiModelProperty(value = "Agência da conta")
 	@Column(name="agencia")
 	private int agencia;
 
+	@ApiModelProperty(value = "Número da conta")
 	@Column(name="conta")
 	private int conta;
 
+	@ApiModelProperty(value = "Saldo da conta")
 	@Column(name="saldo")
 	private Double saldo;
 
