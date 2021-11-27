@@ -1,5 +1,7 @@
 package br.com.bluebank.squad3.models;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

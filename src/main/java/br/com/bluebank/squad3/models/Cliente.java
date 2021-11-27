@@ -7,33 +7,38 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "cliente", uniqueConstraints = { @UniqueConstraint(columnNames = "cpf") })
 public class Cliente {
 
+	@ApiModelProperty(value = "Código do cliente")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_cliente;
 
+	@ApiModelProperty(value = "Nome do cliente")
 	@NotNull(message = "nome não pode ser nulo e nem vazio")
 	@Size(max = 120)
 	@Column(name = "nome")
 	private String nome;
 
+	@ApiModelProperty(value = "CPF do cliente")
 	@NotNull(message = "cpf não pode ser nulo e nem vazio")
 	@CPF
 	@Column(name = "cpf", unique = true, nullable = false, length = 11)
 	private String cpf;
 
+	@ApiModelProperty(value = "Telefone do cliente")
 	@NotNull(message = "telefone não pode ser nulo")
 	@Column(name = "telefone")
 	private Long telefone;
 
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "id_endereco")
-  private Endereco endereco;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco")
+    private Endereco endereco;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idcontafk")
