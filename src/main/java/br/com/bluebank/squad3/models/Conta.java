@@ -1,9 +1,13 @@
 package br.com.bluebank.squad3.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name= "conta")
@@ -14,17 +18,20 @@ public class Conta {
 	@Column(name="id_conta")
 	private Long id_conta;
 
+	@NotNull(message = "Agência não pode ser nula")
 	@Column(name="agencia")
 	private int agencia;
 
+	@NotNull(message = "Conta não pode ser nulo")
 	@Column(name="conta")
 	private int conta;
 
-	@Column(name="saldo")
+	@Min(value=0)
+	@Column(name="saldo", columnDefinition = "int default 0")
 	private Double saldo;
 
-	@OneToOne(mappedBy="conta")
-	private Cliente cliente;
+//	@OneToOne(mappedBy="conta")
+//	private Cliente cliente;
 
 	/*
 	 * @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL) private

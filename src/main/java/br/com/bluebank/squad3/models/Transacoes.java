@@ -7,11 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -38,6 +37,7 @@ public class Transacoes {
 	@Column(name = "id_contarecebe")
 	private Long id_contarecebe;
 
+	@Min(value=1)
 	@NotNull(message = "valor_transacao não pode ser nulo e nem vazio")
 	@Column(name = "valor_transacao")
 	private Double valor_transacao;
