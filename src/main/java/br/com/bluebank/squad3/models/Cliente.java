@@ -85,11 +85,6 @@ public class Cliente {
 		this.conta = conta;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id_cliente);
-	}
-
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -98,16 +93,23 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cliente other = (Cliente) obj;
-		return Objects.equals(id_cliente, other.id_cliente);
-	}
+//	@Override
+//	public int hashCode() {
+//		return Objects.hash(id_cliente);
+//	}
+//
+
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Cliente other = (Cliente) obj;
+//		return Objects.equals(id_cliente, other.id_cliente);
+//	}
 
 }

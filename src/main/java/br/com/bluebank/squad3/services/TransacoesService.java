@@ -3,6 +3,7 @@ package br.com.bluebank.squad3.services;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.bluebank.squad3.models.Conta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +37,12 @@ public class TransacoesService {
 	public void deletar(long id_transacoes) {
 		transacaoRepository.deleteById(id_transacoes);
 
+	}
+	public List<Transacoes> PegarTransacoesContaDebito(Long idconta){
+		return transacaoRepository.findByidcontaenvia(idconta);
+	}
+	public List<Transacoes> PegarTransacoesContaCredito(Long conta){
+		return transacaoRepository.findBycontarecebe(conta);
 	}
 
 }

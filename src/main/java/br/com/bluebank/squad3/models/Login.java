@@ -69,17 +69,17 @@ public class Login {
 	public void setCliente(Cliente id_cliente) {
 		this.cliente = id_cliente;
 	}
-
-	public Login(Long id_login, @NotNull(message = "Email não pode ser nulo e nem vazio") String email,
-			@NotNull(message = "Senha não pode ser nula e nem vazia") String senha) {
-		super();
-		this.id_login = id_login;
-		this.email = email;
-		this.senha = senha;
-	}
-
-	public Login() {
-
-	}
+//sera se pode comentar isso aqui
+//	public Login(Long id_login, @NotNull(message = "Email não pode ser nulo e nem vazio") String email,
+//			@NotNull(message = "Senha não pode ser nula e nem vazia") String senha) {
+//		super();
+//		this.id_login = id_login;
+//		this.email = email;
+//		this.senha = senha;
+//	}
+//
+//	public Login() {
+//
+//	}
 
 }

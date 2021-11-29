@@ -2,6 +2,7 @@ package br.com.bluebank.squad3.controllers;
 
 import java.util.List;
 
+import br.com.bluebank.squad3.models.Conta;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.bluebank.squad3.models.Transacoes;
-import br.com.bluebank.squad3.services.MovimentacaoService;
+import br.com.bluebank.squad3.services.TransferenciaService;
 import br.com.bluebank.squad3.services.TransacoesService;
 
 @Api(value="API Rest Tramsações")
@@ -24,12 +25,12 @@ public class TransacoesController {
 	private TransacoesService transacoesService;
 
 	@Autowired
-	private MovimentacaoService movimentacaoservice;
+	private TransferenciaService transferenciaService;
 
-	@RequestMapping(method = RequestMethod.POST, value = "/")
+	@PostMapping("/")
 	public void create(@RequestBody Transacoes transacoes) {
 		transacoesService.salvar(transacoes);
-		movimentacaoservice.Transferir(transacoes);
+		transferenciaService.Transferir(transacoes);
 	}
 
 	/*
@@ -42,18 +43,17 @@ public class TransacoesController {
 
 	@ApiOperation("Lista Transações")
 	@RequestMapping(method = RequestMethod.GET, path = "listar")
-	public ResponseEntity<?> listar() {
-
-		List<Transacoes> transacoes = this.transacoesService.listar();
-		return new ResponseEntity<>(transacoes, HttpStatus.OK);
+	public ResponseEntity<List<Transacoes>> listarTransacoes() {
+		return  ResponseEntity.ok(transacoesService.listar());
 	}
 
 	@ApiOperation("Traz uma transação")
-	@RequestMapping(method = RequestMethod.GET, path = "buscar/{id}")
-	public ResponseEntity<?> lisbuscarPorId(@PathVariable Long id) {
-		transacoesService.listarporId(id);
-		return new ResponseEntity<>(HttpStatus.OK);
+	@GetMapping("buscar/{id_transacao}")
+	public ResponseEntity<Transacoes> buscarTransacaoPorId(@PathVariable Long id_transacao) {
+		return ResponseEntity.ok(transacoesService.listarporId(id_transacao));
 	}
+
+
 
 	/*
 	 * @RequestMapping(method=RequestMethod.DELETE, path="deletar/{id}" ) public

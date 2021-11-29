@@ -65,9 +65,9 @@ public class ContaController {
 		return new ResponseEntity<>(conta, HttpStatus.CREATED);
 	}
 
-	@ApiOperation("Deleta uma Conta")
-	@DeleteMapping("/deletar/{id_conta}")
-	public void deletarConta(@PathVariable Long id_conta) {
-		contaservice.deletar(id_conta);
-	}
+//	@ApiOperation("Deleta uma Conta")
+//	@DeleteMapping("/deletar/{id_conta}")
+//	public void deletarConta(@PathVariable Long id_conta) {
+//		contaservice.deletar(id_conta);
+//	}
 }

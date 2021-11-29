@@ -43,6 +43,10 @@ public class LoginService {
 		login.setSenha(codificarSenha(login.getSenha()));
 		loginRepository.save(login);
 	}
+	public void deletar(Long idlogin){
+		loginRepository.deleteById(idlogin);
+
+	}
 
 	public String codificarSenha(String senha) {
 
