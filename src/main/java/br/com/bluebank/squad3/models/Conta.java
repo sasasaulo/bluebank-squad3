@@ -8,35 +8,36 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import io.swagger.annotations.ApiModelProperty;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name= "conta")
 public class Conta {
 
+	@ApiModelProperty(value = "Código da conta")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_conta")
 	private Long id_conta;
 
+  @ApiModelProperty(value = "Agência da conta")
 	@NotNull(message = "Agência não pode ser nula")
 	@Column(name="agencia")
 	private int agencia;
 
+  @ApiModelProperty(value = "Número da conta")
 	@NotNull(message = "Conta não pode ser nulo")
 	@Column(name="conta")
 	private int conta;
 
+  @ApiModelProperty(value = "Saldo da conta")
 	@Min(value=0)
 	@Column(name="saldo", columnDefinition = "int default 0")
 	private Double saldo;
-
-//	@OneToOne(mappedBy="conta")
-//	private Cliente cliente;
-
-	/*
-	 * @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL) private
-	 * List<Transacoes> transacoes;
-	 */
 
 	public Long getId_conta() {
 		return id_conta;
@@ -69,17 +70,4 @@ public class Conta {
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
-
-	/*
-	 * public Cliente getCliente() { return cliente; }
-	 * 
-	 * public void setCliente(Cliente cliente) { this.cliente = cliente; }
-	 */
-
-	/*
-	 * public List<Transacoes> getTransacoes() { return transacoes; }
-	 * 
-	 * public void setTransacoes(List<Transacoes> transacoes) { this.transacoes =
-	 * transacoes; }
-	 */
 }

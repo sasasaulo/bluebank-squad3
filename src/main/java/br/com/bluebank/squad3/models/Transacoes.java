@@ -1,5 +1,7 @@
 package br.com.bluebank.squad3.models;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,34 +19,29 @@ import javax.validation.constraints.NotNull;
 @Table(name = "transacoes")
 public class Transacoes {
 
+	@ApiModelProperty(value = "Código da Transação")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_transacoes")
 	private Long id_transacoes;
 
+	@ApiModelProperty(value = "Data da Transação")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
-
-	/*
-	 * @NotNull(message = "tipo_transacao não pode ser nulo e nem vazio")
-	 * 
-	 * @Column(name = "tipo_transacao") private String tipo_transacao;
-	 */
 
 	@Column(name = "id_contaenvia")
 	private Long id_contaenvia;
 
+
 	@Column(name = "id_contarecebe")
 	private Long id_contarecebe;
 
+
 	@Min(value=1)
+	@ApiModelProperty(value = "Valor da Transação")
 	@NotNull(message = "valor_transacao não pode ser nulo e nem vazio")
 	@Column(name = "valor_transacao")
 	private Double valor_transacao;
-
-	/*
-	 * @ManyToOne private Conta conta;
-	 */
 
 	public Long getId_transacoes() {
 		return id_transacoes;
@@ -86,11 +83,6 @@ public class Transacoes {
 		this.valor_transacao = valor_transacao;
 	}
 
-	/*
-	 * public Transacoes() { }
-	 * 
-	 * public Transacoes(@NotNull @NotBlank String tipo_transacao) {
-	 * this.tipo_transacao = tipo_transacao; }
-	 */
+	
 
 }
