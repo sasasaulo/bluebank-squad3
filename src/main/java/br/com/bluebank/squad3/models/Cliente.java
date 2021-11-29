@@ -2,7 +2,6 @@ package br.com.bluebank.squad3.models;
 
 import java.util.Objects;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -36,12 +35,14 @@ public class Cliente {
 	@Column(name = "telefone")
 	private Long telefone;
 
+	@NotNull(message = "Endereço não pode ser nulo")
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco")
-    private Endereco endereco;
+	@JoinColumn(name = "id_endereco")
+	private Endereco endereco;
 
+	@NotNull(message = "Conta não pode ser nula")
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idcontafk")
+	@JoinColumn(name = "idconta")
 	private Conta conta;
 
 	public Long getId_cliente() {
@@ -89,6 +90,14 @@ public class Cliente {
 		return Objects.hash(id_cliente);
 	}
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -102,4 +111,3 @@ public class Cliente {
 	}
 
 }
-

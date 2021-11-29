@@ -25,13 +25,6 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 
-	// @Autowired
-	/*
-	 * public void ClienteService(ClienteService clienteService) {
-	 * this.clienteService = clienteService; }
-	 */
-
-
 	@GetMapping("/listar")
 	@ApiOperation("Lista Clientes")
 	public ResponseEntity<List<Cliente>> listarClientes() {
@@ -53,13 +46,6 @@ public class ClienteController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(clienteService.salvar(cliente));
 	}
 
-	/*
-	 * @PutMapping("/atualizar/{id_cliente}") public ResponseEntity<Cliente>
-	 * atualizarCliente(@PathVariable Long id_cliente, @RequestBody @Valid Cliente
-	 * cliente) throws URISyntaxException { return
-	 * this.clienteService.atualizarCliente(id_cliente, cliente); }
-	 */
-
 	@ApiOperation("Atualiza um Cliente")
 	@PutMapping("/atualizar/{id_cliente}")
 	public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id_cliente, @RequestBody @Valid Cliente cliente)
@@ -68,18 +54,6 @@ public class ClienteController {
 		return new ResponseEntity<>(cliente, HttpStatus.CREATED);
 	}
 
-//	@PutMapping("/atualizar/{id_cliente}")
-//	public Optional<ResponseEntity<Cliente>> atualizarNome(@PathVariable(value = "id_cliente") Long id_cliente,
-//			@RequestBody Cliente nomeAtualizado) {
-//		return clienteRepository.findById(id_cliente).map(nomeExistente -> {
-//			nomeExistente.setNome(nomeAtualizado.getNome());
-//			return Optional
-//					.ofNullable(ResponseEntity.status(HttpStatus.OK).body(clienteRepository.save(nomeExistente)));
-//
-//		}).orElseGet(() -> {
-//			return Optional.empty();
-//		});
-//	}
 	@ApiOperation("Deleta um Cliente")
 	@DeleteMapping("/deletar/{id_cliente}")
 	public void deletarCliente(@PathVariable Long id_cliente) {
