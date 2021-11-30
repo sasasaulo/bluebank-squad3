@@ -30,11 +30,11 @@ public class Transacoes {
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
 	@Column(name = "id_contaenvia")
-	private Long id_contaenvia;
+	private Long idcontaenvia;
 
 
-	@Column(name = "id_contarecebe")
-	private Long id_contarecebe;
+	@Column(name = "contarecebe")
+	private Long contarecebe;
 
 
 	@Min(value=1)
@@ -60,19 +60,19 @@ public class Transacoes {
 	}
 
 	public Long getId_contaenvia() {
-		return id_contaenvia;
+		return idcontaenvia;
 	}
 
 	public void setId_contaenvia(Long id_contaenvia) {
-		this.id_contaenvia = id_contaenvia;
+		this.idcontaenvia = id_contaenvia;
 	}
 
-	public Long getId_contarecebe() {
-		return id_contarecebe;
+	public Long getContarecebe() {
+		return contarecebe;
 	}
 
-	public void setId_contarecebe(Long id_contarecebe) {
-		this.id_contarecebe = id_contarecebe;
+	public void setContarecebe(Long contarecebe) {
+		this.contarecebe = contarecebe;
 	}
 
 	public Double getValor_transacao() {
@@ -82,7 +82,4 @@ public class Transacoes {
 	public void setValor_transacao(Double valor_transacao) {
 		this.valor_transacao = valor_transacao;
 	}
-
-	
-
 }

@@ -1,11 +1,6 @@
 package br.com.bluebank.squad3.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,7 +10,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name= "conta")
+@Table(name= "conta",uniqueConstraints = { @UniqueConstraint(columnNames = "conta") })
 public class Conta {
 
 	@ApiModelProperty(value = "Código da conta")
@@ -31,8 +26,8 @@ public class Conta {
 
   @ApiModelProperty(value = "Número da conta")
 	@NotNull(message = "Conta não pode ser nulo")
-	@Column(name="conta")
-	private int conta;
+	@Column(name="conta",unique = true, nullable = false, length =6)
+	private Long conta;
 
   @ApiModelProperty(value = "Saldo da conta")
 	@Min(value=0)
@@ -55,11 +50,11 @@ public class Conta {
 		this.agencia = agencia;
 	}
 
-	public int getConta() {
+	public Long getConta() {
 		return conta;
 	}
 
-	public void setConta(int conta) {
+	public void setConta(Long conta) {
 		this.conta = conta;
 	}
 

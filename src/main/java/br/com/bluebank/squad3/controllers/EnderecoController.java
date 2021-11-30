@@ -1,6 +1,7 @@
 package br.com.bluebank.squad3.controllers;
 
 import br.com.bluebank.squad3.models.Endereco;
+import br.com.bluebank.squad3.models.Login;
 import br.com.bluebank.squad3.services.EnderecoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,9 +23,9 @@ public class EnderecoController {
     @Autowired
     private EnderecoService enderecoService;
 
-    public void EnderecoService(EnderecoService enderecoService) {
-        this.enderecoService = enderecoService;
-    }
+//    public void EnderecoService(EnderecoService enderecoService) {
+//        this.enderecoService = enderecoService;
+//    }
 
     @ApiOperation("Cadastra um Endereço")
     @PostMapping("/cadastrar")
@@ -38,6 +39,11 @@ public class EnderecoController {
     public ResponseEntity<List<Endereco>> listarEnderecos() {
 
         return ResponseEntity.ok(enderecoService.listar());
+    }
+    @GetMapping("/listar/{id_endereco}")
+    public ResponseEntity<Endereco> listarEnderecoPorId(@PathVariable Long id_endereco) {
+
+        return ResponseEntity.ok(enderecoService.listarPorId(id_endereco));
     }
 
     @ApiOperation("Atualiza um Endereço")

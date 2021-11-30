@@ -54,9 +54,9 @@ public class ClienteController {
 		return new ResponseEntity<>(cliente, HttpStatus.CREATED);
 	}
 
-	@ApiOperation("Deleta um Cliente")
-	@DeleteMapping("/deletar/{id_cliente}")
-	public void deletarCliente(@PathVariable Long id_cliente) {
-		clienteService.deletar((id_cliente));
-	}
+//	@ApiOperation("Deleta um Cliente")
+//	@DeleteMapping("/deletar/{id_cliente}")
+//	public void deletarCliente(@PathVariable Long id_cliente) {
+//		clienteService.deletar((id_cliente));
+//	}
 }

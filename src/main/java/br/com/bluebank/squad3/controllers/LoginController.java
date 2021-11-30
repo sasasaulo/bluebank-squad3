@@ -8,14 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.bluebank.squad3.models.Cliente;
 import br.com.bluebank.squad3.models.Login;
@@ -61,5 +54,9 @@ public class LoginController {
         loginService.alterar(id_login, login);
         return new ResponseEntity<>(login, HttpStatus.CREATED);
     }
+	@DeleteMapping("/deletar/{id_login}")
+	public void deletarConta(@PathVariable Long id_login) {
+        loginService.deletar(id_login);
+	}
 
-}
+    }

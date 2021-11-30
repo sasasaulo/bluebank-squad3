@@ -35,4 +35,8 @@ public class ContaService {
         contarepository.deleteById(idconta);
 
     }
+    public Conta acharConta(Long conta){
+        return contarepository.findByConta(conta);
+
+    }
 }
