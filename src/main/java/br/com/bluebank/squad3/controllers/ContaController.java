@@ -1,7 +1,6 @@
 package br.com.bluebank.squad3.controllers;
 
 import br.com.bluebank.squad3.models.Conta;
-import br.com.bluebank.squad3.repositories.ContaRepository;
 import br.com.bluebank.squad3.services.ContaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,7 +13,7 @@ import javax.validation.Valid;
 import java.net.URISyntaxException;
 import java.util.List;
 
-@Api(value="API Rest Contas")
+@Api(value = "API Rest Contas")
 @CrossOrigin(origins = "*")
 
 @RestController
@@ -23,25 +22,33 @@ public class ContaController {
 	@Autowired
 	private ContaService contaservice;
 
-	@ApiOperation("Lista Contas")
+	@ApiOperation("Lista todas as contas")
 	@GetMapping("/listar")
 	public ResponseEntity<List<Conta>> listarContas() {
 
 		return ResponseEntity.ok(contaservice.listar());
 	}
 
-	@ApiOperation("Lista uma Conta")
+	@ApiOperation("Lista uma conta através do seu ID")
 	@GetMapping("/listar/{id_conta}")
 	public ResponseEntity<Conta> listarContaPorId(@PathVariable Long id_conta) {
 
 		return ResponseEntity.ok(contaservice.listarPorId(id_conta));
 	}
 
-	@ApiOperation("Cadastra uma Conta")
+	@ApiOperation("Cadastra uma conta")
 	@PostMapping("/cadastrar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Conta> cadastrarConta(@RequestBody Conta conta) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(contaservice.salvar(conta));
+	}
+
+	@ApiOperation("Atualiza uma conta")
+	@PutMapping("/atualizar/{id_conta}")
+	public ResponseEntity<Conta> atualizarConta(@PathVariable Long id_conta, @RequestBody @Valid Conta conta)
+			throws URISyntaxException {
+		contaservice.alterar(id_conta, conta);
+		return new ResponseEntity<>(conta, HttpStatus.CREATED);
 	}
 
 //	@PutMapping("/atualizar/{id_cliente}")
@@ -56,14 +63,6 @@ public class ContaController {
 //			return Optional.empty();
 //		});
 //	}
-
-	@ApiOperation("Atualiza uma Conta")
-	@PutMapping("/atualizar/{id_conta}")
-	public ResponseEntity<Conta> atualizarConta(@PathVariable Long id_conta, @RequestBody @Valid Conta conta)
-			throws URISyntaxException {
-		contaservice.alterar(id_conta, conta);
-		return new ResponseEntity<>(conta, HttpStatus.CREATED);
-	}
 
 //	@ApiOperation("Deleta uma Conta")
 //	@DeleteMapping("/deletar/{id_conta}")

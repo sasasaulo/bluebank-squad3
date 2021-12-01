@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import br.com.bluebank.squad3.models.Cliente;
 import br.com.bluebank.squad3.models.Login;
 import br.com.bluebank.squad3.repositories.LoginRepository;
 
@@ -43,7 +42,8 @@ public class LoginService {
 		login.setSenha(codificarSenha(login.getSenha()));
 		loginRepository.save(login);
 	}
-	public void deletar(Long idlogin){
+
+	public void deletar(Long idlogin) {
 		loginRepository.deleteById(idlogin);
 
 	}
@@ -51,8 +51,6 @@ public class LoginService {
 	public String codificarSenha(String senha) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-		// $2a$10$.qwDM9DtiVyy6GFNXuRoS.1sECJx9pZ0d3ih.sIYa0UIE2LC2lKhC
 
 		return encoder.encode(senha);
 	}
