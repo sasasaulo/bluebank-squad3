@@ -7,11 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.amazonaws.services.sns.AmazonSNSClient;
+import com.amazonaws.services.sns.model.SubscribeRequest;
+
+import br.com.bluebank.squad3.configuration.AWSSNSConfig;
 import br.com.bluebank.squad3.models.Login;
 import br.com.bluebank.squad3.repositories.LoginRepository;
 
 @Service
 public class LoginService {
+
+	@Autowired
+	private AmazonSNSClient snsClient;
 
 	@Autowired
 	private LoginRepository loginRepository;
@@ -23,6 +30,18 @@ public class LoginService {
 	public Login cadastrar(Login login) {
 
 		login.setSenha(codificarSenha(login.getSenha()));
+
+		try {
+
+			SubscribeRequest request = new SubscribeRequest(AWSSNSConfig.TOPIC_ARN, "email", login.getEmail());
+
+			snsClient.subscribe(request);
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getLocalizedMessage());
+			System.out.println(e.getCause());
+		}
 
 		return loginRepository.save(login);
 	}
