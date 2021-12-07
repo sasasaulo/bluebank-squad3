@@ -12,18 +12,17 @@ histórico de transações entre as contas.
 
 Squad 3 da turma 2 composto por:
 
-* **Alana Lima** - [GitHub](https://github.com/AlanaLima)
-* **Denise Mignoli** - [GitHub](https://github.com/denisemignoli)
-* **Edmir de Souza** - [GitHub](https://github.com/Edmir-Cabral)
-* **Marcelo Carvalho** - [GitHub](https://github.com/marceloscientist)
-* **Saulo Scarpina** - [GitHub](https://github.com/sasasaulo)
+* **Alana Lima** - [GitHub](https://github.com/AlanaLima) - [Linkedin] (https://www.linkedin.com/in/alana-vieira-bb9006158/ )
+* **Denise Mignoli** - [GitHub](https://github.com/denisemignoli) - [Linkedin] (https://www.linkedin.com/in/denisemignoli/)
+* **Edmir de Souza** - [GitHub](https://github.com/Edmir-Cabral) - [Linkedin] (https://www.linkedin.com/in/edmir-de-souza-9019841b8/)
+* **Marcelo Carvalho** - [GitHub](https://github.com/marceloscientist) - [Linkedin] (https://www.linkedin.com/in/marcelo-carvalho-developer/)
+* **Saulo Scarpina** - [GitHub](https://github.com/sasasaulo) - [Linkedin] (https://www.linkedin.com/in/saulo-scarpina/)
 
 ## 🚀 Requisitos, modificações e execução
 ### ⚙️Requisitos
 * Linguagem Java (versão 11)
 * SpringBoot
 * Maven
-* SQL
 * Banco MySQL(se for outro, mudar as configurações no applicationproperties)
 * Swagger
 * AWS
