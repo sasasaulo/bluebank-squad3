@@ -28,7 +28,7 @@ Squad 3 da turma 2 composto por:
 * Swagger
 * AWS
 
-###🔧Modificações para rodar localmente
+### 🔧Modificações para rodar localmente
 - Faça o download do código
 
  Em um terminal, execute o comando:
@@ -48,7 +48,7 @@ Squad 3 da turma 2 composto por:
 - Caso queira utilizar um bando de dados localmente, o configure no arquivo application.properties
 - Execute como "Spring boot app"
 
-###📋Execução
+### 📋Execução
 
 <p> No caso dessa API, o CRUD completo é feito por meio do Login, ou seja, é possível criar um login e assim um cliente com endereço e conta. 
 E ao deletar o login se deleta também o cliente, a conta e o endereço. 
@@ -69,7 +69,7 @@ E posteriormente é possível mandar um email com aviso de manutenção para tod
 
 <p> Uma vez que tudo isso esteja definido, a aplicação possui os seguintes endpoints como principais</p>
 
-####📌Endpoints
+#### 📌Endpoints
 
 Endpoint         |        Função       |Método        |
 :----------------|---------------------|--------------:
@@ -96,19 +96,19 @@ Endpoint         |        Função       |Método        |
 /enviaNotificacaoAWS | Envia email com aviso para os assinantes do topico|GET| 
 /permiteAWSEnviarEmail/{email} | Permite envir email pedindo confirmação |GET|
 
-#####Localmente
+##### Localmente
 - Utilize a url "localhost:8080/" com o método desejado.
 Exemplo: localhost:8080/clientes/listar
 - Nesse modo, os métodos POST (cadastrar) e PUT (atualizar) não funcionarão corretamente pois precisam ter um "corpo" de dados passados como parâmetro.
 - Nesse caso, é necessário utilizar o link do Swagger ou o Postman para que os métodos sejam executados
 
-####Pela AWS
+#### Pela AWS
 - Utilize a url "Appbluebanks3t2-env.eba-apn8paw9.us-west-2.elasticbeanstalk.com/" com o método desejado.
   Exemplo: Appbluebanks3t2-env.eba-apn8paw9.us-west-2.elasticbeanstalk.com/clientes/listar
 - Nesse modo, os métodos POST (cadastrar) e PUT (atualizar) não funcionarão corretamente pois precisam ter um "corpo" de dados passados como parâmetro.
 - Nesse caso, é necessário utilizar o link do Swagger ou o Postman para que os métodos sejam executados corretamente.
 
-####Swagger
+#### Swagger
 - Acesse "Appbluebanks3t2-env.eba-apn8paw9.us-west-2.elasticbeanstalk.com" ou localhost:8080/e o swagger já listará todos os métodos presentes.
 - Para testar, é necessário escolher o método e clicar em "Try it out" para liberar e após isso, clicar em "Execute".
 - O Swagger já traz o corpo padrão necessário para as requisções PUT e POST.
@@ -117,4 +117,3 @@ Exemplo: localhost:8080/clientes/listar
 - Importe a coleção BlueBank_squad3.postman_collection.json presente na pasta "extras".
 - Crie um novo Environment contendo Variable: "baseUrl" e Initial Value: "Appbluebanks3t2-env.eba-apn8paw9.us-west-2.elasticbeanstalk.com"
 - Já será possível testar os métodos
-
