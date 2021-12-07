@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = { org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration.class, org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration.class, org.springframework.cloud.aws.autoconfigure.context.ContextRegionProviderAutoConfiguration.class })
 @RestController
 @RequestMapping("/")
 public class BluebankSquad3Application {
