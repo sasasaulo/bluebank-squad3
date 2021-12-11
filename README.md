@@ -134,4 +134,3 @@ Além de subir a aplicação com um Banco em RDS e um Beanstalk, também foram c
 #### AWSBuild
  O trabalho possui também uma pipeline no AWSBuild, que é capaz de fazer o build no projeto.
  - Acesse em: https://us-west-2.console.aws.amazon.com/codesuite/codepipeline/pipelines/Pipelinebluebanks3t2/view?region=us-west-2
-

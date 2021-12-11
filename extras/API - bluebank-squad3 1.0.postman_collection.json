@@ -1,0 +1,720 @@
+{
+	"info": {
+		"_postman_id": "78218ced-efb5-4992-ae8c-9e26e478172d",
+		"name": "API - bluebank-squad3 1.0",
+		"description": "Projeto API Spring - bluebank-squad3 1.0\n\nContact Support:\n Name: bluebank_s3_t2\n Email: denisemignoli@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "listar",
+					"item": [
+						{
+							"name": "Lista todos os clientes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/clientes/listar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clientes",
+										"listar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista um cliente através do seu ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/clientes/listar/:id_cliente",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"clientes",
+										"listar",
+										":id_cliente"
+									],
+									"variable": [
+										{
+											"key": "id_cliente",
+											"value": "95866356",
+											"description": "(Required) id_cliente"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Atualiza um cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"conta\": {\n        \"agencia\": -49421758,\n        \"conta\": -80274897,\n        \"id_conta\": 12571504,\n        \"saldo\": 35875268.22917024\n    },\n    \"endereco\": {\n        \"bairro\": \"aliqua id\",\n        \"cep\": \"nostrud\",\n        \"id_endereco\": -63415334,\n        \"numero\": -74522728,\n        \"rua\": \"sint tempor ea qui\"\n    },\n    \"cpf\": \"laboris \",\n    \"id_cliente\": 79374016,\n    \"nome\": \"occaecat\",\n    \"telefone\": -57059799\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clientes/atualizar/:id_cliente",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"atualizar",
+								":id_cliente"
+							],
+							"variable": [
+								{
+									"key": "id_cliente",
+									"value": "95866356",
+									"description": "(Required) id_cliente"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra um cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"conta\": {\n        \"agencia\": -49421758,\n        \"conta\": -80274897,\n        \"id_conta\": 12571504,\n        \"saldo\": 35875268.22917024\n    },\n    \"endereco\": {\n        \"bairro\": \"aliqua id\",\n        \"cep\": \"nostrud\",\n        \"id_endereco\": -63415334,\n        \"numero\": -74522728,\n        \"rua\": \"sint tempor ea qui\"\n    },\n    \"cpf\": \"laboris \",\n    \"id_cliente\": 79374016,\n    \"nome\": \"occaecat\",\n    \"telefone\": -57059799\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clientes/cadastrar",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contas",
+			"item": [
+				{
+					"name": "listar",
+					"item": [
+						{
+							"name": "Lista todas as contas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/contas/listar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contas",
+										"listar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista uma conta através do seu ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/contas/listar/:id_conta",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contas",
+										"listar",
+										":id_conta"
+									],
+									"variable": [
+										{
+											"key": "id_conta",
+											"value": "95866356",
+											"description": "(Required) id_conta"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Atualiza uma conta",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"agencia\": 68283000,\n    \"conta\": 57987056,\n    \"id_conta\": -3703094,\n    \"saldo\": 70486130.22252421\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/contas/atualizar/:id_conta",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contas",
+								"atualizar",
+								":id_conta"
+							],
+							"variable": [
+								{
+									"key": "id_conta",
+									"value": "95866356",
+									"description": "(Required) id_conta"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra uma conta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"agencia\": 68283000,\n    \"conta\": 57987056,\n    \"id_conta\": -3703094,\n    \"saldo\": 70486130.22252421\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/contas/cadastrar",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contas",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "endereco",
+			"item": [
+				{
+					"name": "listar",
+					"item": [
+						{
+							"name": "Lista todos os endereços",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/endereco/listar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"endereco",
+										"listar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista o endereço através do seu ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/endereco/listar/:id_endereco",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"endereco",
+										"listar",
+										":id_endereco"
+									],
+									"variable": [
+										{
+											"key": "id_endereco",
+											"value": "95866356",
+											"description": "(Required) id_endereco"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Atualiza um endereço",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bairro\": \"reprehenderit\",\n    \"cep\": \"cillum elit Lorem culpa deserunt\",\n    \"id_endereco\": -92436859,\n    \"numero\": 92159044,\n    \"rua\": \"ea consectetur sunt est\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/endereco/atualizar/:id_endereco",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"endereco",
+								"atualizar",
+								":id_endereco"
+							],
+							"variable": [
+								{
+									"key": "id_endereco",
+									"value": "95866356",
+									"description": "(Required) id_endereco"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra um endereço",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bairro\": \"reprehenderit\",\n    \"cep\": \"cillum elit Lorem culpa deserunt\",\n    \"id_endereco\": -92436859,\n    \"numero\": 92159044,\n    \"rua\": \"ea consectetur sunt est\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/endereco/cadastrar",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"endereco",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "extrato",
+			"item": [
+				{
+					"name": "Lista os créditos de uma conta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/extrato/credito/:idconta",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"extrato",
+								"credito",
+								":idconta"
+							],
+							"variable": [
+								{
+									"key": "idconta",
+									"value": "95866356",
+									"description": "(Required) idconta"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista os débitos de uma conta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/extrato/debito/:idconta",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"extrato",
+								"debito",
+								":idconta"
+							],
+							"variable": [
+								{
+									"key": "idconta",
+									"value": "95866356",
+									"description": "(Required) idconta"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "listar",
+					"item": [
+						{
+							"name": "Lista todos os logins",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/login/listar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login",
+										"listar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verifica se senha e e-mail são válidos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/login/listar/credenciais/:email/:senha",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login",
+										"listar",
+										"credenciais",
+										":email",
+										":senha"
+									],
+									"variable": [
+										{
+											"key": "email",
+											"value": "in ut sit in",
+											"description": "(Required) email"
+										},
+										{
+											"key": "senha",
+											"value": "in ut sit in",
+											"description": "(Required) senha"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista o login através do seu ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/login/listar/:id_login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login",
+										"listar",
+										":id_login"
+									],
+									"variable": [
+										{
+											"key": "id_login",
+											"value": "95866356",
+											"description": "(Required) id_login"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Atualiza o login",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cliente\": {\n        \"conta\": {\n            \"agencia\": 4013308,\n            \"conta\": 18606775,\n            \"id_conta\": -91215044,\n            \"saldo\": 39325897.14667285\n        },\n        \"endereco\": {\n            \"bairro\": \"id proident amet Lorem\",\n            \"cep\": \"cupidata\",\n            \"id_endereco\": 33494349,\n            \"numero\": 58074196,\n            \"rua\": \"et mollit\"\n        },\n        \"cpf\": \"adipisicing officia\",\n        \"id_cliente\": -62001625,\n        \"nome\": \"non enim est anim\",\n        \"telefone\": 32717746\n    },\n    \"email\": \"deserunt cupidatat\",\n    \"senha\": \"eiusmod dolor\",\n    \"id_login\": 70267572\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login/atualizar/:id_login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login",
+								"atualizar",
+								":id_login"
+							],
+							"variable": [
+								{
+									"key": "id_login",
+									"value": "95866356",
+									"description": "(Required) id_login"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra o login (cliente completo)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cliente\": {\n        \"conta\": {\n            \"agencia\": 4013308,\n            \"conta\": 18606775,\n            \"id_conta\": -91215044,\n            \"saldo\": 39325897.14667285\n        },\n        \"endereco\": {\n            \"bairro\": \"id proident amet Lorem\",\n            \"cep\": \"cupidata\",\n            \"id_endereco\": 33494349,\n            \"numero\": 58074196,\n            \"rua\": \"et mollit\"\n        },\n        \"cpf\": \"adipisicing officia\",\n        \"id_cliente\": -62001625,\n        \"nome\": \"non enim est anim\",\n        \"telefone\": 32717746\n    },\n    \"email\": \"deserunt cupidatat\",\n    \"senha\": \"eiusmod dolor\",\n    \"id_login\": 70267572\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login/cadastrar",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta o login (cliente completo)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/login/deletar/:id_login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login",
+								"deletar",
+								":id_login"
+							],
+							"variable": [
+								{
+									"key": "id_login",
+									"value": "95866356",
+									"description": "(Required) id_login"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transacoes",
+			"item": [
+				{
+					"name": "Lista uma transação através do seu ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/transacoes/buscar/:id_transacao",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transacoes",
+								"buscar",
+								":id_transacao"
+							],
+							"variable": [
+								{
+									"key": "id_transacao",
+									"value": "95866356",
+									"description": "(Required) id_transacao"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Efetua uma transação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contarecebe\": 31618944,\n    \"data\": \"1943-04-16T17:34:49.289Z\",\n    \"id_contaenvia\": -73438018,\n    \"id_transacoes\": -73025,\n    \"valor_transacao\": 75899165.51498048\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transacoes/efetuar",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transacoes",
+								"efetuar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista todas as transações",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/transacoes/listar",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transacoes",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SNS",
+			"item": [
+				{
+					"name": "Envia notificação por e-mail da AWS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/enviaNotificacaoAWS",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"enviaNotificacaoAWS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Envia permissão para receber notificações por e-mail da AWS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/permiteAWSEnviarEmail/:email",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"permiteAWSEnviarEmail",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "email",
+									"value": "in ut sit in",
+									"description": "(Required) email"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "//localhost:8086/",
+			"type": "string"
+		}
+	]
+}
