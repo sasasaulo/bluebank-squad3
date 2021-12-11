@@ -102,17 +102,32 @@ Exemplo: localhost:8080/clientes/listar
 - Nesse caso, é necessário utilizar o link do Swagger ou o Postman para que os métodos sejam executados
 
 #### Pela AWS
-- Utilize a url "Appbluebanks3t2-env.eba-apn8paw9.us-west-2.elasticbeanstalk.com/" com o método desejado.
-  Exemplo: Appbluebanks3t2-env.eba-apn8paw9.us-west-2.elasticbeanstalk.com/clientes/listar
+- Utilize a url "http://s3t2pandasapi-env-2.eba-mysjmetu.us-east-2.elasticbeanstalk.com/" com o método desejado.
+  Exemplo:http://s3t2pandasapi-env-2.eba-mysjmetu.us-east-2.elasticbeanstalk.com/clientes/listar
+- Nesse modo, os métodos POST (cadastrar) e PUT (atualizar) não funcionarão corretamente pois precisam ter um "corpo" de dados passados como parâmetro.
+- Nesse caso, é necessário utilizar o link do Swagger ou o Postman para que os métodos sejam executados corretamente.
+
+#### Gateways
+Além de subir a aplicação com um Banco em RDS e um Beanstalk, também foram configurados gateways para a API.
+- Utilize a url "https://bpaki29922.execute-api.us-east-2.amazonaws.com/s3t2-pandas-estagio-gateway/" com o método desejado.
+  Exemplo:https://bpaki29922.execute-api.us-east-2.amazonaws.com/s3t2-pandas-estagio-gateway/clientes/listar
 - Nesse modo, os métodos POST (cadastrar) e PUT (atualizar) não funcionarão corretamente pois precisam ter um "corpo" de dados passados como parâmetro.
 - Nesse caso, é necessário utilizar o link do Swagger ou o Postman para que os métodos sejam executados corretamente.
 
 #### Swagger
-- Acesse "Appbluebanks3t2-env.eba-apn8paw9.us-west-2.elasticbeanstalk.com" ou localhost:8080/e o swagger já listará todos os métodos presentes.
+- Acesse "http://s3t2pandasapi-env-2.eba-mysjmetu.us-east-2.elasticbeanstalk.com/swagger-ui/" ou localhost:8080/e o swagger já listará todos os métodos presentes.
 - Para testar, é necessário escolher o método e clicar em "Try it out" para liberar e após isso, clicar em "Execute".
 - O Swagger já traz o corpo padrão necessário para as requisções PUT e POST.
 
 #### Postman
 - Importe a coleção BlueBank_squad3.postman_collection.json presente na pasta "extras".
-- Crie um novo Environment contendo Variable: "baseUrl" e Initial Value: "Appbluebanks3t2-env.eba-apn8paw9.us-west-2.elasticbeanstalk.com"
+- Crie um novo Environment contendo Variable: "baseUrl" e Initial Value: "http://s3t2pandasapi-env-2.eba-mysjmetu.us-east-2.elasticbeanstalk.com/"
 - Já será possível testar os métodos
+
+#### Lambda
+ O trabalho possui também uma função lambda que retorna uma mensagem de erro, para que seja executada caso ocorra problemas com o servidor.
+ - Para testá-la, acesse: https://us-east-2.console.aws.amazon.com/lambda/home?region=us-east-2#/functions/s3t2_PANdas_Lambda?tab=code
+ 
+#### AWSBuild
+ O trabalho possui também uma pipeline no AWSBuild, que é capaz de fazer o build no projeto.
+ - Acesse em: https://us-west-2.console.aws.amazon.com/codesuite/codepipeline/pipelines/Pipelinebluebanks3t2/view?region=us-west-2
