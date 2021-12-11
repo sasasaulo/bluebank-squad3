@@ -44,7 +44,7 @@ Squad 3 da turma 2 composto por:
 	public static final String TOPIC_ARN = "";
 ```
 
-- Caso queira utilizar um bando de dados localmente, o configure no arquivo application.properties. Na pasta extas, há um script para criação dos bancos e povoar as tabelas para teste.
+- Caso queira utilizar um bando de dados localmente, o configure no arquivo application.properties. Na pasta extras, há um script para criação do banco e povoar as tabelas para teste.
 - Execute como "Spring boot app" ou pelo terminal com o seguinte comando:
 ```bash
     mvn spring-boot:run
