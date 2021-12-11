@@ -45,7 +45,10 @@ Squad 3 da turma 2 composto por:
 ```
 
 - Caso queira utilizar um bando de dados localmente, o configure no arquivo application.properties
-- Execute como "Spring boot app"
+- Execute como "Spring boot app" ou pelo terminal com o seguinte comando:
+```bash
+    mvn spring-boot:run
+``` 
 
 ### 📋Execução
 
